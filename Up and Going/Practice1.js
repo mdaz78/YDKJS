@@ -6,14 +6,25 @@ const TAX_RATE = 9,
 let bankBalance = 1000;
 let amount = 0;
 
-function taxAmount() {
-
+function taxAmount(amount) {
+    return amount * TAX_RATE;
 }
 
-function formatAmount() {
-
+function formatAmount(amount) {
+    return '$' + amount;
 }
 
-function priceOfPhonePurchase() {
 
+while (amount < bankBalance) {
+    amount += PHONE_PRICE;
+
+    if (amount < SPENDING_THRESHOLD) {
+        amount += ACCESSORY_PRICE;
+    }
+}
+amount += taxAmount(amount);
+console.log("Your purchase : " + formatAmount(amount));
+
+if (amount > bankBalance) {
+    console.log("You can't afford it!");
 }
